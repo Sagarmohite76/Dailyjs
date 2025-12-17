@@ -1,5 +1,6 @@
 let greeting = "Hello, World!";
-console.log(greeting.charAt(4));  // Output: "o"
+console.log(greeting.charAt(-29));  // Output: Empty space
+
 
 let phrase = "This is amazing!";
 console.log(phrase.charAt(2));  // Output: "i"

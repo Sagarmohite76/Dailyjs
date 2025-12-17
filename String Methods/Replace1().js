@@ -1,5 +1,6 @@
 let sentence1 = "Hello, world!";
-console.log(sentence1.replace("world", "JavaScript"));  // Output: "Hello, JavaScript!"
+let val="WO"
+console.log(sentence1.replace("world", val));  // Output: "Hello, JavaScript!"
 
 let sentence2 = "I love JavaScript!";
 console.log(sentence2.replace("love", "enjoy"));  // Output: "I enjoy JavaScript!"

@@ -1,6 +1,6 @@
 let str1 = "Hello";
 let str2 = "world!";
-console.log(str1.concat(", ", str2));  // Output: "Hello, world!"
+console.log(str1.concat(", ",str2));  // Output: "Hello, world!"
 
 let firstName = "John";
 let lastName = "Doe";

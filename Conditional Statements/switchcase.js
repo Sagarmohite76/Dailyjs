@@ -315,7 +315,9 @@ switch (months) {
 //        Apply a 20% discount if the price is ₹10000 or more,
 //         a 10% discount if the price is ₹5000 or more,
 
-//         and no discount for prices below ₹1000.
+//         and no discount for prices below ₹100.
+
+
 
 
 let Price = 700;
