@@ -12,3 +12,4 @@ console.log(phrase.toUpperCase());  // Output: "JAVASCRIPT IS FUN!"
 
 let mixedCase = "tHe QuiCk BrOwn FoX";
 console.log(mixedCase.toUpperCase());  // Output: "THE QUICK BROWN FOX"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

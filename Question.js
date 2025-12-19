@@ -113,19 +113,7 @@ console.log(Fibonacci)
 
 // 10.
 
-function prime(numtocheck) {
-    for (let i = 2; i <= Math.sqrt(numtocheck); i++) {
-        if (numtocheck % i == 0) {
-            return "Not prime"
-        }
-    }
-    if (numtocheck < 2) {
-        return "Not prime"
-    } else {
-        return "Prime"
-    }
-}
-console.log(prime(2))
+
 
 // 11.
 
@@ -360,10 +348,10 @@ for (let i = 0; i < students.length; i++) {
         console.log(students[i].name)
     }
 }
-students.forEach(e=>{
-    if(e.Marks>=70){
+students.forEach(e => {
+    if (e.Marks >= 70) {
         console.log(`${e.name} has marks ${e.Marks}`);
-        
+
     }
 })
 
@@ -381,7 +369,334 @@ let totalMarks = 0
 //     totalMarks += list[i].marks
 // }
 
-list.forEach(e=>{
+list.forEach(e => {
     totalMarks += e.marks
 })
-console.log(totalMarks);            
+console.log(totalMarks);
+
+
+// Write a JavaScript program to check whether a given number is prime or not.
+function prime(numtocheck) {
+    for (let i = 2; i < numtocheck; i++) {
+        if (numtocheck % i == 0) {
+            return "Not prime"
+        }
+    }
+    if (numtocheck < 2) {
+        return "Not prime"
+    } else {
+        return "Prime"
+    }
+}
+console.log(prime(2));
+
+// Factorial 
+function factoria(n) {
+    if (n < 0) {
+        return 'Factorial of negative number is not defined ';
+    } else if (n == 0) {
+        return `Factorial of ${n} is 1`;
+    }
+    let factor = 1
+    for (let i = 1; i <= n; i++) {
+        factor *= i
+    }
+    console.log(factor)
+}
+factoria(5);
+
+
+// 1) write a JavaScript program get an array print If the name length is greeter that 4, convert it to uppercase other wise in lowercase using ternary operator
+
+
+// 2) write a JavaScript program  find largest number in an array  using for loop
+// 3) write a JavaScript program to find negative numbers in an array  using while loop// 4) write a JavaScript program to check array is empty or not
+// 5) write a JavaScript program  find the longest word in an array using for loop
+// 6) Write a JavaScript program using a switch statement to display the number of days in a given month.
+// 7) Calculate Total Marks and Percentage Using a Nested Object in JavaScript
+
+
+// First level.
+// Write a JavaScript program to print all even numbers from an array using a for loop.
+let a = [2, 3, 4, 647, 65, 57];
+let even = [];
+let odd = [];
+for (let i = 0; i < a.length; i++) {
+    if (a[i] % 2 === 0) {
+        even.push(a[i]);
+
+    }
+    else {
+        odd.push(a[i]);
+
+    }
+}
+
+console.log(even);
+console.log(odd);
+
+
+
+// Write a JavaScript program to count total elements in an array using a while loop.
+let a1 = [22, 34, 46, 6, 7, 8, 89];
+let i = 0;
+let numberofe = 0;
+while (i < a1.length) {
+    numberofe++;
+    i++;
+};
+console.log(numberofe);
+
+
+
+// Write a JavaScript program to check whether a number exists in an array or not.
+let a2 = [2, 3, 556, 677, 46, 7];
+let element = 2;
+for (let i = 0; i < a2.length; i++) {
+    if (a2[i] === element) {
+        console.log("element is exist");
+    }
+
+}
+
+// Write a JavaScript program to print all positive numbers from an array using a for loop.
+let a3 = [1, 23, 34, 5, 6, 646, -3, -45];
+let positiveNumbers1 = []
+for (let i = 0; i < a3.length; i++) {
+    if (a3[i] > 0) {
+        positiveNumbers1.push(a3[i]);
+    }
+}
+console.log(positiveNumbers1);
+
+
+
+// Write a JavaScript program to find the sum of array elements using a while loop.
+{
+    let a4 = [1, 2, 34, 456, 6, 7];
+    let sumofa4 = 0;
+    let j = 0;
+    while (j < a4.length) {
+        sumofa4 += a4[j];
+        j++
+    }
+    console.log(sumofa4);
+}
+
+
+// Write a JavaScript program using a switch statement to display the name of the day (1–7).
+let day = 1;
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+
+    case 2:
+        console.log("Tuseday");
+        break;
+
+    case 3:
+        console.log("Wednesday");
+        break;
+
+    case 4:
+        console.log("Thursday");
+        break;
+
+    case 5:
+        console.log("Friday");
+        break;
+
+    case 6:
+        console.log("Saturday");
+        break;
+
+    case 7:
+        console.log("Sunday");
+        break;
+
+    default:
+        console.log("Invalid day");
+
+}
+
+
+
+// Write a JavaScript program to check whether an array length is greater than 5 or not using a ternary operator.
+
+let a5 = [12, 24, 345, 546, 67, 56, 56, 7];
+let a5length = (a5.length < 5) ? "array length is less than 5" : "Not";
+console.log(a5length);
+
+
+
+// Second level
+// Write a JavaScript program to reverse an array using a for loop.
+let b1 = [2, 33, 45, 676, 567];
+let reverseb1 = [];
+for (let i = b1.length - 1; i >= 0; i--) {
+    reverseb1.push(b1[i]);
+}
+console.log(reverseb1);
+
+
+// Write a JavaScript program to find the smallest number in an array using a for loop.
+let b2 = [2, 334, 5, 6, 5, 88];
+let smallest = b2[0];
+for (let i = 0; i < b2.length; i++) {
+    if (smallest > b2[i]) {
+        smallest = b2[i]
+    }
+}
+console.log(smallest);
+
+
+// Write a JavaScript program to print duplicate values from an array.
+let b3 = [2, 345, 67, 56, 2, 456, 6, 7, 67, 6, 7];
+for (let i = 0; i < b3.length; i++) {
+    for (let j = i + 1; j < b3.length; j++) {
+        if (b3[i] == b3[j]) {
+            console.log(b3[i]);
+        }
+    }
+};
+
+// Write a JavaScript program to count even and odd numbers in an array.
+let b4 = [1, 2, 3, 3, 546, 34, 56, 7, 47];
+let evennumbers = 0;
+let oddnumbers = 0;
+
+for (let i = 0; i < b4.length; i++) {
+    if (b4[i] % 2 === 0) {
+        evennumbers++;
+    } else {
+        oddnumbers++;
+    }
+}
+console.log(evennumbers);
+console.log(oddnumbers);
+
+
+
+
+// Write a JavaScript program to check whether a string is palindrome using a loop.
+let b5 = "121";
+let b5reverse = "";
+
+for (let i = b5.length - 1; i >= 0; i--) {
+    b5reverse += b5[i];
+}
+
+if (b5 === b5reverse) {
+    console.log("It is palindrome");
+} else {
+    console.log("Not palindrome");
+}
+
+
+
+
+// Write a JavaScript program to print student name and grade from an object.
+let b6 = {
+    name: "Sagar",
+    grade: "A"
+};
+console.log(b6.name, b6.grade);
+
+
+// Third level
+// Write a JavaScript program to find the second largest number in an array.
+let t1 = [2, 3, 43, 76578];
+let larger = t1[0];
+let sec = ""
+for (let i = 0; i < t1.length; i++) {
+    if (larger < t1[i]) {
+        sec = larger
+        larger = t1[i];
+    } else if (sec < t1[i] && t1[i] != larger) {
+        sec = t1[i]
+    }
+}
+console.log(larger);
+console.log(sec);
+
+
+
+
+
+
+// Write a JavaScript program to print prime numbers from an array using a loop.
+let c3=[2,334,4,5,7,9,0];
+let c3Prime=[];
+
+for(let i=0;i<c3.length;i++){
+    let isprime=true;
+    if(c3[i]<2){
+        isprime = false;
+        
+    }else if(c3[i]){
+         for(let j=2;j<c3[i];j++){
+        if(c3[i]%j==0){
+           isprime=false;
+            
+        }
+    }
+    }
+ if(isprime){
+    c3Prime.push(c3[i])
+ }
+}
+console.log(c3Prime);
+
+
+
+
+// Write a JavaScript program to find the frequency of each element in an array.
+let c5=[1,22,365,6,22,34,345,2,2,6];
+let count=0
+// for(let i=0;i<c5.length;i++){
+//   for(let j=i+1;j<c5.length;j++){
+//     if(c5[i]===c5[j]){
+//         console.log(c5[j]);
+//         count++
+//     }
+//   }
+// }
+// console.log(count);
+
+for(let element of c5){
+    // console.log(element);
+
+    
+}
+// Write a JavaScript program to calculate total marks, percentage, and result using a nested object.
+let Marks={
+    name:"Ram",
+    marks:{
+        math:50,
+        science:50
+    }
+}
+let subjectscount=0;
+let totalmarks=0;
+for(let subjects in Marks.marks){
+   totalmarks += Marks.marks[subjects];
+   subjectscount++;
+}
+let percentage=totalmarks/subjectscount
+console.log(percentage);
+
+console.log(totalmarks);
+console.log(subjectscount);
+
+
+
+
+
+// Write a JavaScript program to display employees whose salary is greater than 30,000 from an array of objects.
+let 
+
+
+// Write a JavaScript program to sort an array without using built-in methods.
+
+// Write a JavaScript program to find the longest and shortest word in an array.

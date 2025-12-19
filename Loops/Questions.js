@@ -183,7 +183,7 @@ for (let i = 5; i >= 1; i--) {
 //   ***
 //    *
 // Q10
-let size = 10;
+let size = 4;
 for (let i = 1; i <= size; i++) {
     let row = "";
     for (let j = i; j <= size; j++) {
@@ -191,7 +191,7 @@ for (let i = 1; i <= size; i++) {
 
     };
     for (let k = 1; k <= (2 * i - 1); k++) {
-        row += "1"
+        row += "*"
     };
     console.log(row);
 
@@ -204,7 +204,7 @@ for (let i = size - 1; i >= 1; i--) {
 
     }
     for (let k = 1; k <= (2 * i - 1); k++) {
-        row += "1"
+        row += "*`   "
     }
     console.log(row);
 

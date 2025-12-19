@@ -18,7 +18,7 @@ console.log(students[2]);
 
 // Add key:value pair to object :
 students[2].grade = "A";
-console.log(students[2]);
+console.log(students[2]); 
 
 // To change the value of key in object :
 students[2].Marks = 90;
@@ -71,82 +71,78 @@ if (students[4].name.length <= 5) {
 // ]
 // console.log(ob);
 
-// Example 1: Students with Details
+
 const Students1 = [
   { name: "Alice", age: 20, grade: "A" },
   { name: "Bob", age: 22, grade: "B" },
   { name: "Charlie", age: 23, grade: "A+" }
 ];
-console.log("1. Students:", Studentstudents1);
+console.log( Studentstudents1);
 
-// Example 2: Books with Authors and Pages
 const books = [
   { title: "1984", author: "George Orwell", pages: 328 },
   { title: "Brave New World", author: "Aldous Huxley", pages: 288 },
   { title: "To Kill a Mockingbird", author: "Harper Lee", pages: 281 }
 ];
-console.log("2. Books:", books);
+console.log( books);
 
-// Example 3: Products with Prices and Categories
+
 const products = [
   { name: "Laptop", price: 1000, category: "Electronics" },
   { name: "Shoes", price: 50, category: "Fashion" },
   { name: "Coffee Maker", price: 30, category: "Home Appliances" }
 ];
-console.log("3. Products:", products);
+console.log(products);
 
-// Example 4: Movies with Directors and Ratings
 const movies = [
   { title: "Inception", director: "Christopher Nolan", rating: 8.8 },
   { title: "The Dark Knight", director: "Christopher Nolan", rating: 9.0 },
   { title: "Titanic", director: "James Cameron", rating: 7.8 }
 ];
-console.log("4. Movies:", movies);
+console.log(movies);
 
-// Example 5: Employees with Positions and Salaries
+
 const employees = [
   { name: "John", position: "Manager", salary: 5000 },
   { name: "Sara", position: "Developer", salary: 4000 },
   { name: "Mike", position: "Designer", salary: 3500 }
 ];
-console.log("5. Employees:", employees);
+console.log(employees);
 
-// Example 6: Cars with Models and Years
+
 const cars = [
   { model: "Tesla Model S", year: 2022 },
   { model: "Ford Mustang", year: 2020 },
   { model: "Toyota Corolla", year: 2021 }
 ];
-console.log("6. Cars:", cars);
+console.log(cars);
 
-// Example 7: Cities with Population and Country
 const cities = [
   { name: "New York", population: 8419600, country: "USA" },
   { name: "Tokyo", population: 13929286, country: "Japan" },
   { name: "Paris", population: 2148327, country: "France" }
 ];
-console.log("7. Cities:", cities);
+console.log(cities);
 
-// Example 8: Players with Teams and Stats
+
 const players = [
   { name: "LeBron James", team: "Lakers", points: 27.0 },
   { name: "Stephen Curry", team: "Warriors", points: 30.0 },
   { name: "Kevin Durant", team: "Nets", points: 29.0 }
 ];
-console.log("8. Players:", players);
+console.log(players);
 
-// Example 9: Movies with Genres and Release Dates
 const movieDetails = [
   { title: "The Matrix", genre: "Sci-Fi", releaseDate: "1999-03-31" },
   { title: "Avatar", genre: "Action", releaseDate: "2009-12-18" },
   { title: "The Godfather", genre: "Crime", releaseDate: "1972-03-24" }
 ];
-console.log("9. Movie Details:", movieDetails);
+console.log(movieDetails);
 
-// Example 10: Countries with Capitals and Continents
+
 const countries = [
   { name: "Canada", capital: "Ottawa", continent: "North America" },
   { name: "India", capital: "New Delhi", continent: "Asia" },
   { name: "Germany", capital: "Berlin", continent: "Europe" }
 ];
-console.log("10. Countries:", countries);
+console.log(countries);
