@@ -626,25 +626,25 @@ console.log(sec);
 
 
 // Write a JavaScript program to print prime numbers from an array using a loop.
-let c3=[2,334,4,5,7,9,0];
-let c3Prime=[];
+let c3 = [2, 334, 4, 5, 7, 9, 0];
+let c3Prime = [];
 
-for(let i=0;i<c3.length;i++){
-    let isprime=true;
-    if(c3[i]<2){
+for (let i = 0; i < c3.length; i++) {
+    let isprime = true;
+    if (c3[i] < 2) {
         isprime = false;
-        
-    }else if(c3[i]){
-         for(let j=2;j<c3[i];j++){
-        if(c3[i]%j==0){
-           isprime=false;
-            
+
+    } else if (c3[i]) {
+        for (let j = 2; j < c3[i]; j++) {
+            if (c3[i] % j == 0) {
+                isprime = false;
+
+            }
         }
     }
+    if (isprime) {
+        c3Prime.push(c3[i])
     }
- if(isprime){
-    c3Prime.push(c3[i])
- }
 }
 console.log(c3Prime);
 
@@ -652,8 +652,8 @@ console.log(c3Prime);
 
 
 // Write a JavaScript program to find the frequency of each element in an array.
-let c5=[1,22,365,6,22,34,345,2,2,6];
-let count=0
+let c5 = [1, 22, 365, 6, 22, 34, 345, 2, 2, 6];
+let count = 0
 // for(let i=0;i<c5.length;i++){
 //   for(let j=i+1;j<c5.length;j++){
 //     if(c5[i]===c5[j]){
@@ -664,26 +664,26 @@ let count=0
 // }
 // console.log(count);
 
-for(let element of c5){
+for (let element of c5) {
     // console.log(element);
 
-    
+
 }
 // Write a JavaScript program to calculate total marks, percentage, and result using a nested object.
-let Marks={
-    name:"Ram",
-    marks:{
-        math:50,
-        science:50
+let Marks = {
+    name: "Ram",
+    marks: {
+        math: 50,
+        science: 50
     }
 }
-let subjectscount=0;
-let totalmarks=0;
-for(let subjects in Marks.marks){
-   totalmarks += Marks.marks[subjects];
-   subjectscount++;
+let subjectscount = 0;
+let totalmarks = 0;
+for (let subjects in Marks.marks) {
+    totalmarks += Marks.marks[subjects];
+    subjectscount++;
 }
-let percentage=totalmarks/subjectscount
+let percentage = totalmarks / subjectscount
 console.log(percentage);
 
 console.log(totalmarks);
@@ -694,9 +694,300 @@ console.log(subjectscount);
 
 
 // Write a JavaScript program to display employees whose salary is greater than 30,000 from an array of objects.
-let 
+let arrofob = [{ empolyee1: "Ram", salary: 30000 }, { empolyee2: "Shyam", salary: 10000 }]
+
+for (let i = 0; i < arrofob.length; i++) {
+    if (arrofob[i].salary >= 30000) {
+        arrofob[i].Salary = "Highest";
+    } else {
+        arrofob[i].Salary = "Lowest";
+    }
+}
+console.log(arrofob);
 
 
 // Write a JavaScript program to sort an array without using built-in methods.
+let sortarr = [1, 2, 34, 45, 56, 567];
 
-// Write a JavaScript program to find the longest and shortest word in an array.
+
+
+// Write a JavaScript program to find the longest and shortest word in an array.\
+let array2 = ["Ram", "Sita", "Sagar"];
+let longestword = array2[0];
+let shortestword = array2[0];
+
+for (let i = 0; i < array2.length; i++) {
+    if (longestword.length < array2[i].length) {
+        longestword = array2[i];
+    } else if (shortestword.length > array2[i].length) {
+        shortestword = array2[i];
+    }
+}
+console.log(`Longest word : ${longestword}`);
+console.log(`Shortest word : ${shortestword}`);
+
+
+
+
+// Write a JavaScript program to swap 5 numbers in a circular manner.
+// Requirements:
+// Take five numbers: a, b, c, d, and e.
+// Perform swapping such that:
+// a gets the value of b
+// b gets the value of c
+// c gets the value of d
+// d gets the value of e
+// e gets the value of a (original value)
+// Print the values before swapping and after swapping.
+// Do the swapping logic in JavaScript.
+// Example:
+// Input: a = 1, b = 2, c = 3, d = 4, e = 5
+{
+    let a = 1;
+    let b = 2;
+    let c = 3;
+    let d = 4;
+    let e = 5;
+    console.log(`Before Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+    // First method
+    // [a,b,c,d,e]=[b,c,d,e,a]
+    // console.log(`After Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+    // Second method
+    let x = a;
+    a = b;
+    b = c;
+    c = d;
+    d = e;
+    e = x;
+    console.log(`After Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+
+}
+
+
+// 1.Create a JavaScript object named student with properties name, rollNo, and marks.
+{
+    let student = {
+        name: "Sagar",
+        rollNo: 45,
+        marks: 100
+    }
+
+
+
+    // Write a function to display all student details.
+    function details(objec) {
+        console.log("Name :", objec.name);
+        console.log("Roll No :", objec.rollNo);
+        console.log("Marks :", objec.marks);
+    }
+    details(student)
+
+}
+
+
+// 2.Create an object marks with values of three subjects.
+{
+    let object = {
+        Math: 99,
+        English: 96,
+        Science: 92
+    }
+
+
+
+    // Write a function to calculate total marks and average.
+    function sum(obj) {
+        let subjectcount = 0;
+        let total = 0;
+        for (let key in obj) {
+            total += obj[key];
+            subjectcount++
+
+        }
+        console.log(total);
+
+        let average = total / subjectcount;
+        console.log(average);
+
+
+    }
+    sum(object)
+}
+
+
+
+
+// 3.Create an object bankAccount with properties accountHolder and balance.
+// Add a function inside the object to display account details.
+
+let bankAccount = {
+    accountholder: "Ram",
+    balance: 70000,
+    details: function () {
+        return `Account holder name is ${this.accountholder} and balance is ${this.balance}`
+    }
+
+}
+
+console.log(bankAccount.details());
+
+// 4.Create an object num with a property value.
+// Write a function to check whether the number is even or odd.
+
+{
+    let object = {
+        num: 20
+    }
+    function evenorOdd(n) {
+        if (n["num"] % 2 === 0) {
+            return "Even"
+        }
+    }
+    console.log(evenorOdd(object));
+
+
+}
+// 5.Create an object numbers containing three values.
+// Write a function to find the largest number.
+let object = {
+    firstvalue: 110,
+    secondvalue: 50,
+    thirdvalue: 90,
+};
+
+function largestnum(n) {
+    let largest = Math.max(n.firstvalue, n.secondvalue, n.thirdvalue);
+
+    if (largest === n.firstvalue) {
+        return 'First value is largest';
+    } else if (largest === n.secondvalue) {
+        return 'Second value is largest';
+    } else {
+        return 'Third value is largest';
+    }
+}
+
+console.log(largestnum(object));
+
+
+{
+    let object = {
+        firstvalue: 110,
+        secondvalue: 50,
+        thirdvalue: 90,
+    };
+
+    function largestnum(n) {
+        let largest = n.firstvalue;
+
+        if (n.secondvalue > largest) {
+            largest = n.secondvalue;
+        }
+
+        if (n.thirdvalue > largest) {
+            largest = n.thirdvalue;
+        }
+
+        if (largest === n.firstvalue) {
+            return 'First value is largest';
+        } else if (largest === n.secondvalue) {
+            return 'Second value is largest';
+        } else {
+            return 'Third value is largest';
+        }
+    }
+
+    console.log(largestnum(object));
+
+}
+
+let str = "({[})";
+
+function balancedOrNot(str) {
+    let stack = [];
+    let pairs = {
+        ")": "(",
+        "}": "{",
+        "]": "["
+    };
+
+    for (let ch of str) {
+        if (ch === "(" || ch === "{" || ch === "[") {
+            stack.push(ch);
+        }
+        // closing brackets
+        else if (ch === ")" || ch === "}" || ch === "]") {
+            if (stack.pop() !== pairs[ch]) {
+                console.log("Not correct");
+                return;
+            }
+        }
+    }
+
+    // stack should be empty at end
+    if (stack.length === 0) {
+        console.log("Correct");
+    } else {
+        console.log("Not correct");
+    }
+}
+
+balancedOrNot(str);
+
+
+// Debounce 
+{
+    function Debounce(fn, delay) {
+        let timer;
+        return function (...arg) {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                fn(...arg);
+            }, delay)
+        }
+    }
+
+    function SearchingFor(search) {
+        console.log("searching for", search);
+
+    }
+    const searchData = Debounce(SearchingFor, 5000);
+    searchData("h");
+    searchData("ha");
+    searchData("har");
+    searchData("hard");
+    searchData("hard ");
+
+}
+
+// Throttle
+function throttle(fn, delay) {
+    let lastCall = 0;
+    return function (...arg) {
+        let now = Date.now();
+        if (now - lastCall >= delay) {
+            fn(...arg);
+            lastCall = now
+        }
+    }
+}
+function sendmsg(msg) {
+    console.log("Message is ", msg);
+
+}
+const sendmsgdata = throttle(sendmsg, 5000)
+setTimeout(() => {
+    sendmsgdata("hi");
+}, 5500)
+setTimeout(() => {
+    sendmsgdata("hello");
+}, 5700)
+setTimeout(() => {
+    sendmsgdata("goodmorning");
+}, 5900)
+
+
+

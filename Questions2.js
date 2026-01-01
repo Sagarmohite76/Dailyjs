@@ -48,9 +48,9 @@ if (arr4.length == 0) {
 
 // 5) write a JavaScript program  find the longest word in an array using for loop
 let arr5 = ["sagar", "Ram", "ritesh"];
-let longestword=arr5[0];
-for(let i=0;i<arr5.length;i++){
-    if(arr5[i].length>longestword.length){
+let longestword = arr5[0];
+for (let i = 0; i < arr5.length; i++) {
+    if (arr5[i].length > longestword.length) {
         longestword = arr5[i];
     }
     // longestword=(arr5[i].length>longestword.length)?arr5[i]:longestword;
@@ -113,43 +113,81 @@ let percentage = totalMarks / subjectscount;
 console.log(percentage);
 
 
-function prime0rnot(n){
-    let isprime=true;
-  if(n<2){
-    isprime=false;
-    return ' Prime number not defined';
-  }else{
-    for(let i=2;i<n;i++){
-        if(n%i==0){
-            isprime=false;
-            return "Not prime";
+function prime0rnot(n) {
+    let isprime = true;
+    if (n < 2) {
+        isprime = false;
+        return ' Prime number not defined';
+    } else {
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) {
+                isprime = false;
+                return "Not prime";
+            }
         }
     }
-  }
-  if(isprime){
-    return ' Prime';
-  }
+    if (isprime) {
+        return ' Prime';
+    }
 }
 console.log(prime0rnot(2));
 
-const factor= function (n){
-  if(n===0){
-    return `Factorial of ${n} is 1`;
-  }
-  else if(n<0){
-    return `Factorial of ${n} is not defined`;
-  }
-  let factor=1;
-  for(let i=1;i<=n;i++){
-    factor *= i
-  }
-  return factor;
+const factor = function (n) {
+    if (n === 0) {
+        return `Factorial of ${n} is 1`;
+    }
+    else if (n < 0) {
+        return `Factorial of ${n} is not defined`;
+    }
+    let factor = 1;
+    for (let i = 1; i <= n; i++) {
+        factor *= i
+    }
+    return factor;
 }
 console.log(factor(0));
-let factors=[];
-for(let i=0;i<=10;i++){
-    if(factor(i)){
+let factors = [];
+for (let i = 0; i <= 10; i++) {
+    if (factor(i)) {
         factors.push(factor(i));
     }
 }
 console.log(factors);
+
+
+// Write a JavaScript program to swap 5 numbers in a circular manner.
+// Requirements:
+// Take five numbers: a, b, c, d, and e.
+// Perform swapping such that:
+// a gets the value of b
+// b gets the value of c
+// c gets the value of d
+// d gets the value of e
+// e gets the value of a (original value)
+// Print the values before swapping and after swapping.
+// Do the swapping logic in JavaScript.
+// Example:
+// Input: a = 1, b = 2, c = 3, d = 4, e = 5
+{
+    let a = 1;
+    let b = 2;
+    let c = 3;
+    let d = 4;
+    let e = 5;
+    console.log(`Before Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+    // First method
+    // [a,b,c,d,e]=[b,c,d,e,a]
+    // console.log(`After Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+    // Second method
+    let x = a;
+    a = b;
+    b = c;
+    c = d;
+    d = e;
+    e = x;
+    console.log(`After Swapping :: a = ${a},b = ${b},c = ${c},d = ${d},e = ${e}`);
+
+
+}

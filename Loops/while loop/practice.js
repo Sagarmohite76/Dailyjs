@@ -71,3 +71,23 @@ while (n2 > 0) {
     n2--;
 }
 console.log("Factorial =", fact);
+
+let pass="Sagar123"
+let istrue=true;
+for(let i=0;i<pass.length;i++){
+    if(pass.includes(pass[i].toUpperCase()) && pass.length==8 && pass.includes(parseInt(pass[i]))){
+        istrue=true
+        
+    }else{
+        istrue=false
+        
+    }
+}
+if(istrue){
+    console.log("ok");
+    
+}else{
+    console.log("Not ok");
+    
+}
+
