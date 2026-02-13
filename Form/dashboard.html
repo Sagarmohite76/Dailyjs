@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 380px;
+            background: #ffffff;
+            padding: 32px 28px;
+            border-radius: 22px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+            font-weight: 700;
+            margin: 0 auto 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin: 8px 0 4px;
+            color: #222;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 22px;
+        }
+
+        .info {
+            background: #f5f7fa;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info p {
+            margin: 0;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #dcdcdc;
+        }
+
+        .info p:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info span:first-child {
+            font-weight: 600;
+            color: #1d2671;
+        }
+
+        .info span:last-child {
+            font-weight: 500;
+            color: #444;
+        }
+
+        #mobile {
+            font-size: 14px;
+            font-weight: 600;
+            color: #c33764;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="profile"><span id="firstletter">S</span></div>
+
+        <h2>Welcome, <span id="name">Sagar</span> 👋</h2>
+        <p class="subtitle">Dashboard Overview</p>
+
+        <div class="info">
+            <p><span>Name:</span><span id="name2">Sagar</span></p>
+            <p><span>Mobile number:</span><span id="mobile"></span></p>
+            <p><span>Email ID:</span><span id="email"></span></p>
+            <p><span>College Name:</span><span id="college"></span></p>
+
+
+        </div>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        let arrData = JSON.parse(localStorage.getItem("Allstudent"));
+        let user = arrData.find((e, index) => {
+            if (e.phone) {
+                document.getElementById("firstletter").textContent = e.name.slice(0, 1);
+                document.getElementById("name").textContent = e.name;
+                document.getElementById("name2").textContent = e.name;
+
+                document.getElementById("email").textContent = e.email;
+                document.getElementById("college").textContent = e.college;
+                document.getElementById("mobile").textContent = e.phone;
+            }
+        })
+
+        function logout() {
+            window.location.href = "index.html";
+        }
+
+
+        // Timing session out
+        let timing = 10000;
+        let timeout;
+
+        // user inactive
+        function inactive() {
+            alert("Your session is out so login again");
+            window.location.href = "index.html"
+
+        }
+
+        function resetTime() {
+            // clear time after login
+            clearTimeout(timeout)
+            timeout = setTimeout(inactive, timing);
+
+        }
+
+
+        document.addEventListener("mousemove", resetTime);
+        document.addEventListener("mousedown", resetTime);
+        document.addEventListener("keypress", resetTime);
+        document.addEventListener("scroll", resetTime);
+        document.addEventListener("click", resetTime);
+        document.addEventListener("touchstart", resetTime);
+        resetTime()
+
+    </script>
+
+</body>
+
+</html>

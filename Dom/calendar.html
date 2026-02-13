@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        input[type="number"] {
+            padding: 10px 12px;
+            width: 220px;
+            border: 2px solid #3f51b5;
+            border-radius: 8px;
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"]::placeholder {
+            color: #777;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1a237e;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3f51b5;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #283593;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div>
+        <input type="number" id="num" placeholder="Enter month number ">
+        <button onclick="printCalendr()">Print Calendar</button>
+    </div>
+    <div>
+        <h1 id="heading"></h1>
+        <p id="days"></p>
+        <pre id="st1"></pre>
+    </div>
+
+    <script>
+        function printCalendr() {
+            let num = Number(document.getElementById("num").value)
+            let heading = document.getElementById("heading");
+            let days = document.getElementById("days");
+            let calendar = document.getElementById("st1");
+
+            let date = new Date();
+            let month = num - 1;
+            if (month > 12 || month < 0) {
+                alert("Month is not valid")
+            }
+            else {
+                let year = date.getFullYear();
+
+                let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                heading.textContent = `${months[month]} ${year}`;
+                days.textContent = "Sun Mon Tue Wed Thu Fri Sat";
+
+                let firstDay = new Date(year, month, 1).getDay();
+                let lastDate = new Date(year, month + 1, 0).getDate();
+
+                let calendarText = "";
+                for (let i = 0; i < firstDay; i++) {
+                    calendarText += "    ";
+                }
+                for (let day = 1; day <= lastDate; day++) {
+                    calendarText += day.toString().padStart(3, " ") + " ";
+
+                    if ((day + firstDay) % 7 === 0) {
+                        calendarText += "\n";
+                    }
+                }
+
+                calendar.innerText = calendarText;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

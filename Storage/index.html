@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IndexedDB Demo</title>
+</head>
+
+<body>
+
+    <button onclick="addData()">Add Data</button>
+    <button onclick="getData()">Get Data</button>
+    <button onclick="deleteData()">Delete Database</button>
+
+    <script>
+        let db;
+
+        // 1️⃣ Open Database
+        const request = indexedDB.open("MyDatabase", 1);
+
+        // 2️⃣ Create Object Store (runs only once or on version change)
+        request.onupgradeneeded = function (e) {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains("users")) {
+                db.createObjectStore("users", {
+                    keyPath: "id",
+                    autoIncrement: true
+                });
+            }
+            console.log("Object store created");
+        };
+
+        // 3️⃣ Database Ready
+        request.onsuccess = function (e) {
+            db = e.target.result;
+            console.log("Database opened successfully");
+        };
+
+        request.onerror = function () {
+            console.error("Failed to open database");
+        };
+
+        // ➕ Add Data
+        function addData() {
+            if (!db) return alert("Database not ready yet");
+
+            const tx = db.transaction("users", "readwrite");
+            const store = tx.objectStore("users");
+
+            const req = store.add({ name: "Sagar", age: 22 });
+
+            req.onsuccess = () => console.log("Data added");
+            req.onerror = () => console.error("Add failed");
+        }
+
+        // 📥 Get Data
+        function getData() {
+            if (!db) return alert("Database not ready yet");
+
+            const tx = db.transaction("users", "readonly");
+            const store = tx.objectStore("users");
+
+            const req = store.getAll();
+
+            req.onsuccess = (e) => {
+                console.log("All users:", e.target.result);
+            };
+        }
+
+        // ❌ Delete Database
+        function deleteData() {
+            if (db) db.close();
+
+            const delRequest = indexedDB.deleteDatabase("MyDatabase");
+
+            delRequest.onsuccess = () => {
+                console.log("Database deleted successfully");
+            };
+
+            delRequest.onerror = () => {
+                console.error("Failed to delete database");
+            };
+        }
+    </script>
+
+</body>
+</html>

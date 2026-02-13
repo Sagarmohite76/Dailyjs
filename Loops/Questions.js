@@ -209,3 +209,58 @@ for (let i = size - 1; i >= 1; i--) {
     console.log(row);
 
 };
+
+
+
+// 1.Write a JavaScript program that iterates over an object using a for...in loop and removes all properties whose values are null, undefined, or an empty string.
+
+let ob={
+    null:null,
+    undefined:undefined,
+    name:"Sagar",
+    age:""
+}
+for(let key in ob){
+    if(ob[key]===null || ob[key]===undefined || ob[key]===""){  
+        delete ob[key]
+    }
+}
+console.log(ob);
+
+
+
+// 2.Write a JavaScript program that uses a for...of loop to calculate the total price of all items in an array of numbers.\
+
+let arr=[12,500,9000];
+let total=0
+for(let ele of arr){
+ total += ele;
+}
+console.log(total);
+
+
+// 3.Write a JavaScript program that uses a for...in loop to find the total sum of all numeric values present in an object.
+let ob1={
+    first:20,
+    sec:30,
+    nmae:"Sagar"
+}
+let sum=0;
+for(let key in ob1){
+    if(Number(ob1[key])){
+     sum += ob1[key]
+    }
+}
+console.log(sum);
+
+
+
+// 4.Write a JavaScript program that uses a for...of loop to convert all words in an array to uppercase and store the results in a new array.
+
+let array=['ram',"sita","sagar"];
+let newArr=[];
+for(let ele of array){
+    newArr.push(ele.toUpperCase());
+}
+
+console.log(newArr);

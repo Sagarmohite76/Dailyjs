@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Create an input box and a paragraph. When the user types in the input, display the value in the paragraph.
+Create an input and button. When the button is clicked, add the input value as a new list item. -->
+    <input type="text" oninput="display(this.value)">
+    <p id="res"></p>
+
+    <!-- Create an input and button. When the button is clicked, add the input value as a new list item. -->
+    <input type="text" id="text1">
+    <button onclick="click1()">click me</button>
+    <ol id="result"></ol>
+
+
+    <script>
+        function display(val) {
+            document.getElementById("res").innerText = val
+        }
+        function click1() {
+            let Text = document.getElementById("text1");
+            let result = document.getElementById("result")
+            result.innerHTML += `<li>${Text.value}</li>`
+
+        }
+    </script>
+</body>
+
+</html>

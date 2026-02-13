@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login with OTP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+        }
+
+        .card {
+            width: 360px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #c33764;
+        }
+
+        .otp-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .otp-group input {
+            width: 55px;
+            height: 55px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .otp-group input:focus {
+            border-color: #1d2671;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 18px;
+            color: #555;
+        }
+
+        .footer-text a {
+            text-decoration: none;
+            color: #c33764;
+            font-weight: 600;
+        }
+
+        .otpvalidation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1d2671;
+            background: rgba(29, 38, 113, 0.08);
+            border-radius: 12px;
+        }
+
+        #time {
+            min-width: 32px;
+            text-align: center;
+            padding: 4px 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #c33764;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .registration-text {
+            text-align: center;
+            margin: 15px 0 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .register-link {
+            margin-left: 4px;
+            font-weight: 700;
+            color: #1d2671;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .register-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            border-radius: 10px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .register-link:hover {
+            color: #c33764;
+        }
+
+        .register-link:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Login with OTP</h2>
+
+        <div class="input-group">
+            <label>Mobile Number</label>
+            <input type="text" placeholder="Enter mobile number" id="mobileNum" required maxlength="10">
+        </div>
+
+        <div class="input-group">
+            <label>OTP</label>
+            <div class="otp-group" id="otpg">
+                <input type="text" maxlength="1" id="in1" class="inputs">
+                <input type="text" maxlength="1" id="in2" class="inputs">
+                <input type="text" maxlength="1" id="in3" class="inputs">
+                <input type="text" maxlength="1" id="in4" class="inputs">
+            </div>
+            <span class="otpvalidation">Otp will Expire in :<span style="text-align: right;" id="time">0</span></span>
+        </div>
+        <p class="registration-text">
+            If you are not registered, then
+            <span class="register-link" onclick="goToRegister()">register</span>
+        </p>
+
+        <button class="btn" onclick="btn(this)">Get Otp</button>
+        <button class="btn" onclick="btn2()">Verify & Login</button>
+
+        <div class="footer-text">
+            Didn’t receive OTP? <a href="#" onclick="otp(this)">Resend</a>
+        </div>
+    </div>
+    <script>
+
+        let otpGroup = document.querySelectorAll(".inputs");
+        let Otp = "";
+        let mobileNumber;
+
+        otpGroup.forEach((input, index) => {
+            input.addEventListener("input", function () {
+                if (otpGroup[index + 1]) {
+                    otpGroup[index + 1].focus();
+                }
+            });
+        });
+
+        function btn(a) {
+            mobileNumber = document.getElementById("mobileNum");
+            let arrData = JSON.parse(localStorage.getItem("Allstudent"));
+            let user = arrData.find(e => mobileNumber.value == e.phone)
+
+            if (!user) {
+                alert("You are not register first fill the registration form");
+            } else {
+                if (mobileNumber.value.length === 10) {
+                    otp();
+                    a.disabled = true;
+                    let count = 10;
+                    let timer = setInterval(() => {
+                        let time = document.getElementById("time");
+                        time.innerHTML = count;
+                        if (count == 0) {
+                            clearInterval(timer);
+                            Otp = null;
+                        }
+                        count--;
+                    }, 1000)
+                } else {
+                    alert("Enter valid mobile number");
+                }
+            }
+
+
+
+        }
+
+        function otp(b) {
+            mobileNumber = document.getElementById("mobileNum");
+            let arrData = JSON.parse(localStorage.getItem("Allstudent"));
+            let user = arrData.find(e => mobileNumber.value == e.phone)
+            if (!user) {
+                alert("You are not register first fill the registration form");
+            } else {
+                if (mobileNumber.value.length === 10) {
+                    Otp = "";
+                    for (let i = 0; i < 4; i++) {
+                        Otp += Math.floor(Math.random() * 10);
+                        b.disabled = true;
+                    }
+                    alert("OTP: " + Otp);
+                    let count = 10;
+                    let timer = setInterval(() => {
+                        let time = document.getElementById("time");
+                        time.innerHTML = count;
+                        if (count >= 0) {
+                            clearInterval(timer);
+                            Otp = null;
+                        }
+                        count--;
+                    }, 1000);
+                } else {
+                    alert("Enter valid number");
+                }
+            }
+
+        }
+
+        function btn2() {
+            let otpValid = "";
+            otpGroup.forEach(input => otpValid += input.value);
+
+            if (otpValid === Otp) {
+
+                alert("Login Successful");
+                window.location.href = "dashboard.html";
+
+            } else {
+                alert("OTP does not match");
+            }
+        }
+        function goToRegister() {
+            window.location.href = "Form.html";
+        }
+
+    </script>
+
+</body>
+
+</html>

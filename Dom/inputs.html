@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Enter to Next Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="myForm">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+    </form>
+
+    <script>
+        const inputs = document.querySelectorAll("#myForm input");
+
+        inputs.forEach((input, index) => {
+            input.addEventListener("keydown", function (e) {
+                // console.log(e.key);
+
+                if (e.key === "Enter") {
+                    e.preventDefault(); // stop form submit
+                    if (inputs[index + 1]) {
+                        inputs[index + 1].focus(); // move to next input
+                    }
+                }
+                if (e.key === "Backspace") {
+                    e.preventDefault();
+                    if (inputs[index - 1]) {
+                        inputs[index - 1].focus();
+                    }
+                }
+                if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    if (inputs[index - 1]) {
+                        inputs[index - 1].focus();
+                    }
+                }
+                 if (e.key === "ArrowDown") {
+                    e.preventDefault(); // stop form submit
+                    if (inputs[index + 1]) {
+                        inputs[index + 1].focus(); // move to next input
+                    }
+                }
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>

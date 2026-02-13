@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Hour Digital Clock</title>
+</head>
+
+<body>
+
+    <div class="clock">
+        <span id="time">00:00:00</span>
+        <span id="ampm">AM</span>
+    </div>
+
+    <script>
+        function updateClock() {
+            let date = new Date();
+
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let ampm = hours >= 12 ? "PM" : "AM";
+
+            // Convert to 12-hour format
+            hours = hours % 12;
+            hours = hours === 0 ? 12 : hours;
+
+            hours = String(hours).padStart(2, "0");
+            minutes = String(minutes).padStart(2, "0");
+            seconds = String(seconds).padStart(2, "0");
+
+            document.getElementById("time").innerHTML =
+                `${hours}:${minutes}:${seconds}`;
+            document.getElementById("ampm").innerHTML = ampm;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+
+</html>

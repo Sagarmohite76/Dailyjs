@@ -240,7 +240,7 @@ let p = ArrArm.map(e => {
 
     return e ** 3
 })
-console.log(p)
+console.log(p);
 
 let total = p.reduce((acc, curr) => acc + curr, 0);
 console.log(total);
@@ -990,4 +990,414 @@ setTimeout(() => {
 }, 5900)
 
 
+
+// Grocery Store Billing System
+// You are designing a billing system for a grocery store.
+
+// You are given an array of purchased items where each item is stored as a string in the format:
+// "itemName:price", e.g.
+// Write a function that:
+
+// removes duplicate items using array/string methods
+
+// calculates the total bill using loops
+
+// ensures if the bill exceeds ₹200, apply 10% discount using if-else
+
+// returns a final bill summary
+let Productlist = [
+    {
+        itemname: "Sugar",
+        price: 100
+    },
+    {
+        itemname: "Rice (1kg)",
+        price: 70
+    },
+    {
+        itemname: "Wheat Flour (1kg)",
+        price: 45
+    },
+    {
+        itemname: "Cooking Oil (1L)",
+        price: 150
+    },
+    {
+        itemname: "Salt",
+        price: 30
+    },
+    {
+        itemname: "Milk (1L)",
+        price: 80
+    },
+    {
+        itemname: "Eggs (1 dozen)",
+        price: 90
+    }
+]
+
+
+// Output the final bill summary
+
+// 1) Write a JavaScript program to calculate a discount using an arrow function and a ternary operator.
+let arrow = (price) => {
+    let discount = (price > 1000) ? price * 0.2 : price
+    let actualPrice = price - discount
+    return `Actual price is ${actualPrice} and discount on it ${discount}`
+}
+console.log(arrow(3000));
+
+
+
+// 2) Write a JavaScript Program to Find the Largest Number Between Two Numbers Using a Named Function
+function largestNum(a, b) {
+    let largest = (a > b) ? a : b;
+    console.log(largest);
+
+}
+largestNum(2, 10)
+
+// 3) Write a JavaScript program Reverse a string using function
+function reverse(str) {
+    let reverse = ""
+    for (let i = str.length - 1; i >= 0; i--) {
+        reverse += str[i]
+    }
+    console.log(reverse);
+
+}
+reverse("hello")
+
+// 4) write a JavaScript program to Count vowels in a string using named function
+function vowels(str) {
+    let vowels = "aeiou";
+    let countVowels = 0;
+    for (let char of str.toLowerCase()) {
+        if (vowels.includes(char)) {
+            countVowels++
+        }
+    }
+    console.log(countVowels);
+
+}
+vowels("hello");
+
+
+// 1)From a list of users, get only active users.
+let users = [
+    { name: "A", active: true },
+    { name: "B", active: false },
+    { name: "C", active: true }
+];
+function activeUsers(arr) {
+    let Active = []
+    for (let ele of arr) {
+        if (ele.active) {
+            Active.push(ele)
+
+        }
+    }
+    console.log(Active);
+
+}
+activeUsers(users);
+let activeUsers = users
+
+// 2)Create a countdown from 3 to 1 and stop automatically using setInterval and clearInterval .
+let b = 3;
+let c = setInterval(() => {
+    console.log(b);
+    if (b < 2) {
+        clearInterval(c)
+    }
+    b--;
+}, 1000);
+
+
+// 3)Remove duplicate users based on id.
+let users2 = [
+    { id: 1, name: "A" },
+    { id: 2, name: "B" },
+    { id: 1, name: "A" }
+];
+
+function duplicate(arr) {
+    let newarr = [];
+    for (let ele of arr) {
+        if (!newarr.some((users) => users.id === ele.id)) {
+            newarr.push(ele);
+        }
+    }
+    console.log(newarr);
+
+}
+duplicate(users2);
+
+
+// Q.Write a program that uses the filter() method to extract all odd numbers from the array [10, 15, 20, 25, 30].
+let arr1 = [10, 15, 20, 25, 30];
+let oddnum = arr1.filter(e => e % 2 !== 0)
+console.log(oddnum);
+
+
+// Q: Given an array of strings, group them into arrays of anagrams. 
+// input:
+let words = ["eat", "tea", "tan", "ate", "nat", "bat"];
+// output:
+// [
+//   ["eat","tea","ate"],
+//   ["tan","nat"],
+//   ["bat"]
+// ]
+let object = {}
+for (let char of words) {
+    let splitedArr = char.split("").sort().join("");
+    console.log(splitedArr);
+
+    if (!object[splitedArr]) {
+        object[splitedArr] = []
+    }
+    object[splitedArr].push(char)
+}
+console.log(object);
+
+for (let key in object) {
+    console.log(object[key])
+}
+// console.log(object);
+let Values = Object.values(object);
+console.log(Values);
+
+
+
+// Q: Write a program that counts the frequency of each character in a string.
+// input :
+// let str = "javascript";
+// output:
+// { j:1, a:2, v:1, s:1, c:1, r:1, i:1, p:1, t:1 }
+
+
+function repeation(str) {
+    let ob = {};
+
+    for (let char of str) {
+        let count = 0
+        for (let char2 of str) {
+            if (char == char2) {
+                count++
+            }
+        }
+        ob[char] = count
+    }
+    console.log(ob);
+
+}
+repeation("Javascript")
+
+//  Count frequency of each number in an array
+// Input: [1, 2, 2, 3, 3, 3]
+// Output: {1:1, 2:2, 3:3}
+let arr2 = [1, 2, 2, 3, 3, 3];
+let obj = {};
+for (let ele of arr2) {
+    let count = 0;
+    for (let ele2 of arr2) {
+        if (ele == ele2) {
+            count++;
+        }
+    }
+    obj[ele] = count
+}
+let Highest = 0;
+let hi = null
+for (let key in obj) {
+    if (Highest < obj[key]) {
+        Highest = obj[key]
+        hi = key
+    }
+}
+console.log(hi);
+
+console.log(obj);
+
+// Find the longest word in an array
+// Input: ["js", "javascript", "html"]
+// Output: "javascript"
+
+let arr3 = ["js", "javascript", "html"]
+let longest = arr3[0]
+for (let ele of arr3) {
+    if (ele.length > longest.length) {
+        longest = ele
+    }
+}
+console.log(longest);
+
+
+// 🔟 Reverse each word in a string
+// Input: "hello world"
+// Output: "olleh dlrow"
+
+function eachWord(str) {
+    let strArr = str.split(" ");
+    let arr = []
+    // console.log(strArr);
+    for (let ele of strArr) {
+        arr.push(ele.split("").reverse().join(""))
+    }
+    // console.log(arr);
+    let res = arr.join(" ");
+    console.log(res);
+}
+eachWord("hello world");
+
+// Find common elements between two arrays
+// Input: [1,2,3,4], [3,4,5,6]
+// Output: [3,4]
+
+function commonElements(arr1, arr2) {
+    let result = [];
+    for (let ele of arr1) {
+        for (let ele2 of arr2) {
+            if (ele == ele2) {
+                result.push(ele)
+            }
+        }
+    }
+    console.log(result);
+
+}
+commonElements([1, 2, 3, 4], [3, 4, 5, 6]);
+
+// Remove falsy values from array
+// Input: [0, 1, false, 2, "", 3]
+// Output: [1, 2, 3]
+
+let arr4 = [0, 1, false, 2, "", 3];
+function removeFalsy(arr) {
+    let newArr = [];
+    for (let ele of arr) {
+        if (!(ele == 0 || ele == false || ele == "")) {
+            newArr.push(ele)
+        }
+    }
+    console.log(newArr);
+}
+removeFalsy(arr4);
+
+
+// Create a for loop that logs numbers from 10 to 1 in reverse, but break if it reaches 5.
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+    if (i === 5) break;
+
+}
+
+// Write a loop that finds the maximum value in [3, 7, 2, 9, 5] using a for loop.
+let arrr = [3, 7, 2, 9, 5];
+let largest = arrr[0];
+for (let i = 0; i < arrr.length; i++) {
+    if (arrr[i] > largest) {
+        largest = arrr[i]
+    }
+}
+console.log(largest);
+
+// Write a JavaScript program using a named function to print each element of an array with its index using the forEach() method	
+
+function array(arr) {
+    arr.forEach((e, index) => {
+        console.log(`Element is ${e} and at index  ${index}`);
+
+    })
+}
+array([1, 5, 154, 154, 15, 1])
+
+// Write a JavaScript program using a named function to check if an array contains any negative numbers
+function checkNum(arr) {
+    let nums = arr.every(e => e > 0)
+    if (nums) {
+        console.log("Array not contains negative value");
+
+    } else {
+        console.log("Array  contains negative value");
+    }
+
+}
+checkNum([1, 2]);
+
+// Write a JavaScript program using a named function to sort an array of numbers in ascending order.
+function sortArray(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] > arr[j + 1]) {
+                let temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    console.log(arr);
+
+}
+
+function sort(arr) {
+    return arr.sort()
+}
+console.log(sort([4, 56, 67, 889, 9]));
+
+// Write a JavaScript program using a named function to return a new array containing the lengths of each string in the original array.
+function newArr(arr) {
+    let newArr1 = arr.map(e => e.length)
+    console.log(newArr1);
+}
+newArr(["sagar", "ritesh"]);
+
+
+// Write a program to count how many properties an object has.
+let objcount = {
+    name: "Sagar",
+    age: 19,
+    rollNo: 45
+};
+let countprop = 0;
+for (let key in objcount) {
+    countprop++
+}
+console.log(countprop);
+//  Write a program using nested loops to print a number pattern and calculate the sum of all printed numbers.
+
+let Sum = 0;
+for (let i = 1; i <= 5; i++) {
+    let pattern = ''
+    for (let j = 1; j <= i; j++) {
+        pattern += j + " "
+        Sum += j
+    }
+    console.log(pattern);
+}
+
+console.log("Sum of all printed numbers is :", Sum);
+
+
+//  Write a program using class and methods to create a Rectangle and calculate area, perimeter, and diagonal length.
+class Rectangle {
+    constructor(length, width) {
+        this.length = length;
+        this.width = width;
+    }
+    area() {
+        return this.length * this.width;
+    }
+    perimeter() {
+        return 2 * (this.length + this.width);
+    }
+    diagonal() {
+        return Math.sqrt(this.length ** 2 + this.width ** 2);   
+    }
+}
+let rectangle = new Rectangle(5, 10);
+console.log("Area :", rectangle.area());
+console.log("Perimeter :", rectangle.perimeter());
+console.log("Diagonal Length :", rectangle.diagonal());
 

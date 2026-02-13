@@ -24,4 +24,4 @@ for (let i = -1; i >= -numbers1.length; i--) {
 }
 
 let arr = [10, 20, 30];
-console.log(arr.at(-3));
+console.log(arr.at(-10));

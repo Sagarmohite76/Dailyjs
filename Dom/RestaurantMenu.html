@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+            color: #fff;
+            display: grid;
+            grid-template-columns: 70% 30%;
+            min-height: 100vh;
+        }
+
+        #menulist {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-right: 2px solid #2a2a2a;
+            background: radial-gradient(circle at top, #141414, #0b0b0b);
+            overflow-y: auto;
+        }
+
+        #menulist>h1 {
+            font-size: 34px;
+            color: #f4b41a;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        #menulist div {
+            background: linear-gradient(145deg, #181818, #101010);
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid #2f2f2f;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #menulist div::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(#f4b41a, #ffd369);
+            border-radius: 12px 0 0 12px;
+        }
+
+        #menulist div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(244, 180, 26, 0.3);
+        }
+
+        #menulist h1 {
+            font-size: 16px;
+            color: #f4b41a;
+            flex: 2;
+            font-weight: 600;
+        }
+
+        #menulist h4 {
+            font-size: 14px;
+            color: #ddd;
+            flex: 1;
+            text-align: center;
+        }
+
+
+        #menulist button {
+            padding: 8px 18px;
+            font-size: 13px;
+            border-radius: 20px;
+            border: none;
+            background: linear-gradient(135deg, #f4b41a, #ffd369);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #menulist button:hover {
+            background: linear-gradient(135deg, #ffd369, #f4b41a);
+            transform: scale(1.1);
+        }
+
+        #selected {
+            padding: 30px;
+            background: linear-gradient(180deg, #121212, #0c0c0c);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+
+        #selected h2 {
+            color: #f4b41a;
+            font-size: 26px;
+            border-bottom: 2px dashed #333;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+        }
+
+
+        #selected h3 {
+            color: #ffd369;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+
+        #selected div {
+            background: linear-gradient(145deg, #1b1b1b, #121212);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 5px solid #f4b41a;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+
+        #selected h1 {
+            font-size: 15px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+
+            #selected {
+                border-top: 2px solid #2a2a2a;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="menulist">
+        <h1 style="font-size: 30px;text-align: center;">Menu List</h1>
+    </div>
+    <div id="selected">
+        <h2 id="result">Total bill :</h2>
+        <h3 style="  color: #f4b41a;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;"> # Selected list</h3>
+    </div>
+    <script>
+        let menuList = document.getElementById("menulist");
+        let selectedList = document.getElementById("selected");
+        const restaurantMenu = [
+            { dish: "Paneer Butter Masala", price: 180 },
+            { dish: "Palak Paneer", price: 160 },
+            { dish: "Dal Makhani", price: 150 },
+            { dish: "Chole Bhature", price: 130 },
+            { dish: "Mixed Vegetable Curry", price: 140 },
+            { dish: "Kadai Paneer", price: 170 },
+            { dish: "Butter Chicken (Murgh Makhani)", price: 220 },
+            { dish: "Chicken Tikka Masala", price: 210 },
+            { dish: "Mutton Rogan Josh", price: 250 },
+            { dish: "Fish Curry", price: 230 },
+            { dish: "Biryani (Veg/Chicken)", price: 190 },
+            { dish: "Naan (Plain/Butter)", price: 40 },
+            { dish: "Roti", price: 20 },
+            { dish: "Paneer Tikka", price: 150 },
+            { dish: "Samosa (2 pcs)", price: 60 },
+            { dish: "Pani Puri", price: 50 },
+            { dish: "Gulab Jamun", price: 70 },
+            { dish: "Gajar Ka Halwa", price: 80 },
+            { dish: "Kulfi", price: 60 }
+        ];
+        let newarr = [];
+        function duplicate(arr) {
+            for (let ele of arr) {
+                if (!newarr.some((item) => item.dish === ele.dish)) {
+                    newarr.push(ele);
+                }
+            }
+
+        }
+        duplicate(restaurantMenu);
+
+        restaurantMenu.forEach((e, index) => {
+            let div = document.createElement("div");
+            div.innerHTML = `
+            <h1>Dish Name : ${e.dish}</h1>
+            <h4>Price : ${e.price}</h4>
+            <button onclick="addtolist(${index})">Add to list </button>
+            `;
+            menuList.appendChild(div)
+        });
+
+
+        let clickItem = [];
+        function addtolist(ele) {
+            if (!clickItem.includes(newarr[ele])) {
+                let div = document.createElement("div");
+                div.innerHTML = `<h1>Dish Name : ${newarr[ele].dish}  ${newarr[ele].price}/-</h1>`;
+                selectedList.appendChild(div);
+            }
+            clickItem.push(newarr[ele]);
+
+            calculate()
+
+        }
+        function calculate() {
+            let sum = 0;
+            for (let ele of clickItem) {
+                sum += ele.price
+            }
+            let discount=(sum>1000)?sum*0.2:0;
+            document.getElementById("result").innerHTML = `Total bill : ${sum}<p> Discount : ${discount}</p> `
+        }
+    </script>
+</body>
+
+</html>

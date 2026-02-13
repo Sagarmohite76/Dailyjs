@@ -191,3 +191,66 @@ console.log(factors);
 
 
 }
+
+// 4️⃣ Restaurant Order System
+
+// Items format:
+
+// { dish: "Paneer Butter Masala", price: 180 }
+
+
+// Tasks:
+
+// Prevent duplicate items in cart
+
+// Display cart items separately
+
+// Calculate total bill
+
+// If total > ₹500 apply 15% discount
+
+// Show discount amount separately
+
+const restaurantMenu = [
+
+    { dish: "Paneer Butter Masala", price: 180 },
+    { dish: "Palak Paneer", price: 160 },
+    { dish: "Dal Makhani", price: 150 },
+    { dish: "Chole Bhature", price: 130 },
+    { dish: "Mixed Vegetable Curry", price: 140 },
+    { dish: "Kadai Paneer", price: 170 },
+    { dish: "Butter Chicken (Murgh Makhani)", price: 220 },
+    { dish: "Chicken Tikka Masala", price: 210 },
+    { dish: "Mutton Rogan Josh", price: 250 },
+    { dish: "Fish Curry", price: 230 },
+    { dish: "Biryani (Veg/Chicken)", price: 190 },
+    { dish: "Naan (Plain/Butter)", price: 40 },
+    { dish: "Roti", price: 20 },
+    { dish: "Paneer Tikka", price: 150 },
+    { dish: "Samosa (2 pcs)", price: 60 },
+    { dish: "Pani Puri", price: 50 },
+    { dish: "Gulab Jamun", price: 70 },
+    { dish: "Gajar Ka Halwa", price: 80 },
+    { dish: "Kulfi", price: 60 }
+];
+let newarr = [];
+function duplicate(arr) {
+    for (let ele of arr) {
+        if (!newarr.some((item) => item.dish === ele.dish)) {
+            newarr.push(ele);
+        }
+    }
+
+}
+ duplicate(restaurantMenu);
+
+ function calculate(){
+  let sum=0;
+  for(let ele of newarr){
+    sum += ele.price
+  }
+  
+ }
+ calculate()
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="text">Colour</h1>
+    <button onclick="colour()">Change color</button>
+    <script>
+        let isRed = true;
+
+        function colour() {
+            let text = document.getElementById("text");
+            if(isRed){
+            document.body.style.background="Black";
+              text.style.color="red";
+            }else{
+            document.body.style.background="white";
+              text.style.color="black";
+            }
+            isRed=!isRed;
+
+            // if (text.classList.contains("color")) {
+            //     text.classList.remove("color");
+            //     text.classList.add("green");
+            // } else {
+            //     text.classList.remove("green");
+            //     text.classList.add("color");
+            // }
+
+
+        }
+    </script>
+</body>
+
+</html>

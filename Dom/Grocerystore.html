@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            width: 95%;
+            max-width: 1100px;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+            padding: 25px;
+            color: white;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 25px;
+            padding: 25px;
+            background: #f6f8ff;
+        }
+
+        /* Form Card */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            margin-top: 6px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #6a11cb;
+        }
+
+        .btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        /* Table Card */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            background: white;
+        }
+
+        tr:nth-child(even) td {
+            background: #f2f4ff;
+        }
+
+        @media (max-width: 850px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="header">
+            <h1>Student Management System</h1>
+        </div>
+
+        <div class="content">
+
+            <!-- Student Form -->
+            <div class="card">
+                <h2>Add Student</h2>
+
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter full name" id="name">
+
+                <label>Roll Number</label>
+                <input type="text" placeholder="Enter roll number" id="rollNo">
+
+                <label>Class</label>
+                <input type="text" placeholder="Enter class" id="class">
+
+                <label>Email</label>
+                <input type="email" placeholder="Enter email" id="email">
+
+                <button class="btn" onclick="add()">Save Student</button>
+            </div>
+
+            <!-- Student Table -->
+            <div class="card">
+                <h2>Student Records</h2>
+
+                <table id="row">
+                    <tr>
+                        <th>NO.</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Email</th>
+
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function add() {
+            let name = document.getElementById("name");
+            let rollNo = document.getElementById("rollNo");
+            let Class = document.getElementById("class");
+            let email = document.getElementById("email");
+            let row = document.getElementById("row");
+            let tr = document.createElement("tr");
+            let tdName = document.createElement("td");
+            tdName.innerHTML = name.value;
+            let tdRollNO = document.createElement("td");
+            tdRollNO.textContent = rollNo.value;
+            let tdClass = document.createElement("td");
+            tdClass.textContent = Class.value;
+            let tdEmail = document.createElement("td");
+            tdEmail.textContent = email.value;
+            row.appendChild(tr);
+            tr.appendChild(tdRollNO);
+            tr.appendChild(tdName);
+            tr.appendChild(tdClass);
+            tr.appendChild(tdEmail);
+        }
+
+    </script>
+</body>
+
+</html>
